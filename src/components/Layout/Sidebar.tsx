@@ -147,22 +147,22 @@ export const Sidebar = () => {
                   <div className="flex-1 text-left">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-sm font-medium">{module.title}</span>
-                      {module.badge && (
-                        <Badge 
-                          variant={module.badge === "✓" ? "default" : "secondary"}
-                          className="text-xs px-1.5 py-0.5"
-                        >
-                          {module.badge}
-                        </Badge>
-                      )}
                     </div>
                     {module.progress > 0 && (
-                      <div className="w-full bg-muted rounded-full h-1.5">
+                      <div className="w-full bg-muted rounded-full h-1.5 mb-2">
                         <div 
                           className="h-1.5 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] rounded-full transition-all duration-500"
                           style={{ width: `${module.progress}%` }}
                         />
                       </div>
+                    )}
+                    {module.badge && (
+                      <Badge 
+                        variant={module.badge === "✓" ? "default" : "secondary"}
+                        className="text-xs px-1.5 py-0.5"
+                      >
+                        {module.badge}
+                      </Badge>
                     )}
                   </div>
                 </div>
