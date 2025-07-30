@@ -15,10 +15,10 @@ export const WelcomeSection = () => {
             </Badge>
           </div>
           <h2 className="text-3xl font-bold mb-2">
-            Learn Claude Code on the go
+            See it. Do it. Learn it. Fast.
           </h2>
           <p className="text-white/90 mb-6 max-w-2xl">
-            See it. Do it. Learn it. Fast. Transform from having no clue at all to being a Claude Code boss through our comprehensive, 
+            Transform from having no clue at all to being a Claude Code boss through our comprehensive, 
             hands-on curriculum designed by a guy who knew how to prompt really well.
           </p>
           <div className="flex flex-wrap gap-3">
