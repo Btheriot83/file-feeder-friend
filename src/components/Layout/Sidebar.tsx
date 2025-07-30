@@ -45,7 +45,7 @@ export const Sidebar = () => {
             </h3>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-[hsl(var(--primary))]">{Math.round(overallProgress)}%</span>
-              <div className="animate-pulse">🚀</div>
+              <span className="animate-bounce text-xl">🚀</span>
             </div>
           </div>
           <div className="relative">
@@ -56,8 +56,10 @@ export const Sidebar = () => {
             />
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-[hsl(var(--success))] font-medium animate-fade-in">You're crushing it! 🔥</span>
-            <span className="text-muted-foreground">Building Beast Mode</span>
+            <span className="text-[hsl(var(--success))] font-medium animate-fade-in">
+              You've got this! <span className="animate-pulse">🔥</span>
+            </span>
+            <span className="text-muted-foreground">No procrastination zone</span>
           </div>
         </div>
       </div>
