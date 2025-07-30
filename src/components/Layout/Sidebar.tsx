@@ -17,18 +17,18 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 
 const modules = [
-  { id: 1, title: "Foundation & Philosophy", icon: Brain, progress: 100, badge: "✓" },
-  { id: 2, title: "Core Mechanics", icon: Zap, progress: 85, badge: "Current" },
-  { id: 3, title: "Context & Control", icon: Target, progress: 60, badge: null },
-  { id: 4, title: "Terminal Workflows", icon: Code, progress: 0, badge: null },
-  { id: 5, title: "Advanced Patterns", icon: Puzzle, progress: 0, badge: null },
-  { id: 6, title: "Project Architecture", icon: BookOpen, progress: 0, badge: null },
-  { id: 7, title: "Debugging & Testing", icon: Bug, progress: 0, badge: null },
-  { id: 8, title: "Git Integration", icon: GitBranch, progress: 0, badge: null },
-  { id: 9, title: "Production Workflows", icon: Rocket, progress: 0, badge: null },
-  { id: 10, title: "Team Collaboration", icon: Users, progress: 0, badge: null },
-  { id: 11, title: "Enterprise Patterns", icon: Trophy, progress: 0, badge: null },
-  { id: 12, title: "Innovation & Future", icon: Lightbulb, progress: 0, badge: null },
+  { id: 1, title: "So what in the actual hell is Claude Code?", icon: Brain, progress: 100, badge: "✓" },
+  { id: 2, title: "The Magic Behind the Curtain", icon: Zap, progress: 85, badge: "Current" },
+  { id: 3, title: "Who's Really in Control Here?", icon: Target, progress: 60, badge: null },
+  { id: 4, title: "Terminal Wizardry & Command Line Kung Fu", icon: Code, progress: 0, badge: null },
+  { id: 5, title: "Level Up: Advanced Mind Tricks", icon: Puzzle, progress: 0, badge: null },
+  { id: 6, title: "Building Stuff That Doesn't Suck", icon: BookOpen, progress: 0, badge: null },
+  { id: 7, title: "When Things Go Horribly Wrong", icon: Bug, progress: 0, badge: null },
+  { id: 8, title: "Git Good or Go Home", icon: GitBranch, progress: 0, badge: null },
+  { id: 9, title: "Ship It Like a Pro", icon: Rocket, progress: 0, badge: null },
+  { id: 10, title: "Playing Nice with Others", icon: Users, progress: 0, badge: null },
+  { id: 11, title: "Enterprise-Grade Beast Mode", icon: Trophy, progress: 0, badge: null },
+  { id: 12, title: "The Future is Now (And It's Awesome)", icon: Lightbulb, progress: 0, badge: null },
 ];
 
 export const Sidebar = () => {
@@ -51,7 +51,7 @@ export const Sidebar = () => {
             />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Module 2 Active</span>
+            <span>You're crushing it! 🔥</span>
             <span>Foundation Phase</span>
           </div>
         </div>
