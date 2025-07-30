@@ -65,14 +65,15 @@ export const Sidebar = () => {
             )}
           </div>
           
-          {/* Motivational Messages - Now on separate lines */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-[hsl(var(--success))] font-medium text-sm">You've got this!</span>
-              <span className="text-sm">🔥</span>
+          {/* Motivational Messages - Properly Spaced */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-start">
+              <span className="text-[hsl(var(--success))] font-semibold text-sm">You've got this!</span>
+              <span className="ml-2 text-base">🔥</span>
             </div>
-            <div className="text-right">
-              <span className="text-muted-foreground text-xs">No procrastination zone 🛠️</span>
+            <div className="flex items-center justify-end">
+              <span className="text-muted-foreground font-medium text-xs">No procrastination zone</span>
+              <span className="ml-1 text-sm">🛠️</span>
             </div>
           </div>
         </div>
