@@ -10,11 +10,15 @@ import {
   Target,
   Puzzle,
   Rocket,
-  Bug
+  Bug,
+  Check,
+  Circle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useState } from "react";
 
 const modules = [
   { id: 1, title: "What the Hell is Claude Code?", icon: Brain, progress: 100, badge: "✓" },
@@ -31,8 +35,38 @@ const modules = [
   { id: 12, title: "Hustle and Innovate", icon: Lightbulb, progress: 0, badge: null },
 ];
 
+// Current lesson tasks based on the active module
+const currentLessonTasks = {
+  2: { // "Under the Hood Secrets" module
+    title: "Understanding AI Architecture",
+    tasks: [
+      { id: 1, title: "Study transformer models", completed: true, clickable: true },
+      { id: 2, title: "Analyze token processing", completed: true, clickable: true },
+      { id: 3, title: "Explore attention mechanisms", completed: false, clickable: true },
+      { id: 4, title: "Practice: Debug AI responses", completed: false, clickable: false }
+    ]
+  },
+  // Add more modules as needed
+};
+
 export const Sidebar = () => {
   const overallProgress = 100; // Temporarily set to 100% to preview the gold master badge
+  const currentModuleId = 2; // "Under the Hood Secrets" - the current active module
+  const currentTasks = currentLessonTasks[currentModuleId];
+  const [taskStates, setTaskStates] = useState(
+    currentTasks?.tasks.reduce((acc, task) => ({ ...acc, [task.id]: task.completed }), {}) || {}
+  );
+
+  const handleTaskToggle = (taskId: number) => {
+    setTaskStates(prev => ({ ...prev, [taskId]: !prev[taskId] }));
+  };
+
+  const handleTaskClick = (task: any) => {
+    if (task.clickable) {
+      // Navigate to specific part of lesson - placeholder for now
+      console.log(`Navigating to: ${task.title}`);
+    }
+  };
 
   return (
     <aside className="hidden md:flex w-80 bg-card border-r flex-col">
@@ -127,34 +161,59 @@ export const Sidebar = () => {
             );
           })}
           
-          {/* Current Module Tasks */}
-          <div className="mt-6 pt-4 border-t border-muted">
-            <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">Current Module Tasks</h4>
-            <div className="space-y-2">
-              <div className="p-3 rounded-lg bg-background border border-[hsl(var(--primary))]/20">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-[hsl(var(--primary))]"></div>
-                  <span className="text-sm font-medium">Understanding AI Code Generation</span>
-                </div>
-                <p className="text-xs text-muted-foreground mb-2">Learn the fundamentals of how Claude Code works under the hood</p>
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-xs">In Progress</Badge>
-                  <span className="text-xs text-muted-foreground">2/4 subtasks</span>
-                </div>
-              </div>
-              
-              <div className="p-3 rounded-lg bg-muted/50 border border-muted">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-muted-foreground"></div>
-                  <span className="text-sm font-medium text-muted-foreground">Practice: Code Review</span>
-                </div>
-                <p className="text-xs text-muted-foreground mb-2">Review and analyze AI-generated code samples</p>
-                <div className="flex items-center gap-2">
-                  <Badge variant="secondary" className="text-xs">Upcoming</Badge>
-                  <span className="text-xs text-muted-foreground">0/3 subtasks</span>
-                </div>
+          {/* Current Lesson Tasks */}
+          {currentTasks && (
+            <div className="mt-6 pt-4 border-t border-muted">
+              <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">
+                Current Lesson: {currentTasks.title}
+              </h4>
+              <div className="space-y-2">
+                {currentTasks.tasks.map((task) => (
+                  <div 
+                    key={task.id}
+                    className={`flex items-start gap-3 p-3 rounded-lg border transition-smooth ${
+                      task.clickable 
+                        ? 'hover:border-[hsl(var(--primary))]/30 cursor-pointer hover:bg-[hsl(var(--primary))]/5' 
+                        : 'border-muted'
+                    }`}
+                    onClick={() => handleTaskClick(task)}
+                  >
+                    <Checkbox 
+                      checked={taskStates[task.id] || false}
+                      onCheckedChange={() => handleTaskToggle(task.id)}
+                      className="mt-0.5"
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    <div className="flex-1">
+                      <span className={`text-sm ${
+                        taskStates[task.id] ? 'line-through text-muted-foreground' : 'text-foreground'
+                      }`}>
+                        {task.title}
+                      </span>
+                      {task.clickable && (
+                        <div className="flex items-center gap-1 mt-1">
+                          <Circle className="h-2 w-2 fill-[hsl(var(--primary))] text-[hsl(var(--primary))]" />
+                          <span className="text-xs text-[hsl(var(--primary))]">Interactive</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          )}
+
+          {/* Resources Section */}
+          <div className="mt-6 pt-4 border-t border-muted">
+            <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">Resources</h4>
+            <Button 
+              variant="outline" 
+              className="w-full justify-start gap-2 bg-background border-[hsl(var(--primary))]/20 hover:bg-[hsl(var(--primary))]/5"
+              onClick={() => window.location.href = '/use-case-library'}
+            >
+              <BookOpen className="h-4 w-4" />
+              Use Case Library
+            </Button>
           </div>
         </div>
       </div>
