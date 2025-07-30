@@ -51,23 +51,23 @@ export const Sidebar = () => {
           </div>
           
           {/* Progress Bar with Scratch & Reveal */}
-          <div className="relative">
+          <div className="relative mb-4">
             <Progress value={overallProgress} className="h-4" />
             <div 
-              className="absolute top-0 left-0 h-4 progress-bar rounded-full transition-all duration-1000 animate-fade-in"
+              className="absolute top-0 left-0 h-4 progress-bar rounded-full transition-all duration-1000"
               style={{ width: `${overallProgress}%` }}
             />
-            {/* Scratch & Reveal Overlay */}
+            {/* Gold Master Badge - shows when 100% complete */}
             {overallProgress === 100 && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full animate-fade-in">
-                <span className="text-xs font-bold text-yellow-900">Claude Code Master</span>
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-lg">
+                <span className="text-xs font-bold text-yellow-900 tracking-wide">✨ CLAUDE CODE MASTER ✨</span>
               </div>
             )}
           </div>
           
-          {/* Bottom Messages - Separated */}
-          <div className="space-y-2 pt-1">
-            <div className="flex items-center gap-1">
+          {/* Motivational Messages - Now on separate lines */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success))] font-medium text-sm">You've got this!</span>
               <span className="text-sm">🔥</span>
             </div>
