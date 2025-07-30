@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Header } from "@/components/Layout/Header";
 import { Sidebar } from "@/components/Layout/Sidebar";
 import { WelcomeSection } from "@/components/Dashboard/WelcomeSection";
@@ -8,7 +9,22 @@ import { Home, BookOpen, Library, Users, User } from "lucide-react";
 
 const Index = () => {
   const [currentModule, setCurrentModule] = useState(0);
-  const [activeTab, setActiveTab] = useState("home");
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Set active tab based on current route
+  const getActiveTab = () => {
+    switch (location.pathname) {
+      case "/social":
+        return "social";
+      case "/use-case-library":
+        return "library";
+      default:
+        return "home";
+    }
+  };
+  
+  const [activeTab, setActiveTab] = useState(getActiveTab());
 
   const navigateNextModule = () => {
     // Add logic to navigate to next module
@@ -27,12 +43,19 @@ const Index = () => {
   });
 
   const tabItems = [
-    { id: "home", label: "Home", icon: Home },
-    { id: "lessons", label: "Lessons", icon: BookOpen },
-    { id: "library", label: "Library", icon: Library },
-    { id: "social", label: "Social", icon: Users },
-    { id: "profile", label: "Profile", icon: User },
+    { id: "home", label: "Home", icon: Home, path: "/" },
+    { id: "lessons", label: "Lessons", icon: BookOpen, path: "/lessons" },
+    { id: "library", label: "Library", icon: Library, path: "/use-case-library" },
+    { id: "social", label: "Social", icon: Users, path: "/social" },
+    { id: "profile", label: "Profile", icon: User, path: "/profile" },
   ];
+
+  const handleTabClick = (tabId: string, path: string) => {
+    setActiveTab(tabId);
+    if (path !== location.pathname) {
+      navigate(path);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -55,7 +78,7 @@ const Index = () => {
             return (
               <button
                 key={item.id}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => handleTabClick(item.id, item.path)}
                 className={`flex flex-col items-center justify-center space-y-1 p-2 rounded-lg transition-colors min-h-[3rem] ${
                   activeTab === item.id
                     ? "text-primary bg-primary/10"

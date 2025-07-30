@@ -1,9 +1,48 @@
-import { Code2, Menu, Search, User } from "lucide-react";
+import { Code2, Menu, Search, User, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useToast } from "@/hooks/use-toast";
 
 export const Header = () => {
+  const { toast } = useToast();
+
+  const handleShareProgress = async () => {
+    const shareData = {
+      title: 'My ClaudeCode Mastery Progress',
+      text: '🚀 100% Claude Code Master! Join me on this amazing coding journey.',
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: copy to clipboard
+        await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+        toast({
+          title: "Progress shared!",
+          description: "Link copied to clipboard. Share it with your friends!",
+        });
+      }
+    } catch (error) {
+      // If sharing fails, just copy to clipboard
+      try {
+        await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+        toast({
+          title: "Progress shared!",
+          description: "Link copied to clipboard. Share it with your friends!",
+        });
+      } catch (clipError) {
+        toast({
+          variant: "destructive",
+          title: "Share failed",
+          description: "Unable to share progress. Please try again.",
+        });
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
@@ -41,6 +80,28 @@ export const Header = () => {
           <Button variant="ghost" size="icon" className="md:hidden">
             <Search className="h-5 w-5" />
           </Button>
+          
+          {/* Share Progress Button */}
+          <Button 
+            onClick={handleShareProgress}
+            variant="outline" 
+            size="sm"
+            className="hidden sm:flex items-center gap-2 hover-scale transition-smooth"
+          >
+            <Share2 className="h-4 w-4" />
+            <span className="hidden lg:inline">Share Progress</span>
+          </Button>
+          
+          {/* Mobile Share Button */}
+          <Button 
+            onClick={handleShareProgress}
+            variant="ghost" 
+            size="icon" 
+            className="sm:hidden"
+          >
+            <Share2 className="h-5 w-5" />
+          </Button>
+          
           <Avatar className="h-8 w-8">
             <AvatarImage src="/placeholder.svg" />
             <AvatarFallback>
