@@ -3,14 +3,14 @@ import {
   Code, 
   GitBranch, 
   Lightbulb, 
-  Play, 
   Trophy, 
   Users,
   Zap,
   Brain,
   Target,
   Puzzle,
-  Rocket
+  Rocket,
+  Bug
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -23,7 +23,7 @@ const modules = [
   { id: 4, title: "Terminal Workflows", icon: Code, progress: 0, badge: null },
   { id: 5, title: "Advanced Patterns", icon: Puzzle, progress: 0, badge: null },
   { id: 6, title: "Project Architecture", icon: BookOpen, progress: 0, badge: null },
-  { id: 7, title: "Debugging & Testing", icon: Play, progress: 0, badge: null },
+  { id: 7, title: "Debugging & Testing", icon: Bug, progress: 0, badge: null },
   { id: 8, title: "Git Integration", icon: GitBranch, progress: 0, badge: null },
   { id: 9, title: "Production Workflows", icon: Rocket, progress: 0, badge: null },
   { id: 10, title: "Team Collaboration", icon: Users, progress: 0, badge: null },
@@ -51,7 +51,7 @@ export const Sidebar = () => {
             />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Day 18 of 90</span>
+            <span>Module 2 Active</span>
             <span>Foundation Phase</span>
           </div>
         </div>
@@ -110,10 +110,6 @@ export const Sidebar = () => {
       {/* Quick Actions */}
       <div className="p-4 border-t">
         <div className="space-y-2">
-          <Button variant="outline" className="w-full justify-start gap-2">
-            <Play className="h-4 w-4" />
-            Terminal Playground
-          </Button>
           <Button variant="outline" className="w-full justify-start gap-2">
             <BookOpen className="h-4 w-4" />
             Use Case Library

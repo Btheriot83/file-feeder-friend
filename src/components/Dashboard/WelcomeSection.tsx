@@ -11,11 +11,11 @@ export const WelcomeSection = () => {
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-4">
             <Badge variant="secondary" className="bg-white/20 text-white border-0">
-              Day 18 • Foundation Phase
+              Module 2 • Foundation Phase
             </Badge>
           </div>
           <h2 className="text-3xl font-bold mb-2">
-            Master Claude Code in 90 Days
+            Learn Claude Code on the go
           </h2>
           <p className="text-white/90 mb-6 max-w-2xl">
             Transform from a beginner to a production-ready Claude Code expert through our comprehensive, 
@@ -32,7 +32,8 @@ export const WelcomeSection = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10"
+              className="border-white/30 text-white hover:bg-white/10 bg-white/5"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               View Progress
             </Button>
@@ -67,8 +68,8 @@ export const WelcomeSection = () => {
                 <Clock className="h-6 w-6 text-[hsl(var(--info))]" />
               </div>
               <div>
-                <p className="text-2xl font-bold">24h</p>
-                <p className="text-sm text-muted-foreground">Time Invested</p>
+                <p className="text-2xl font-bold">18/120</p>
+                <p className="text-sm text-muted-foreground">Lessons Completed</p>
               </div>
             </div>
           </CardContent>
@@ -81,8 +82,8 @@ export const WelcomeSection = () => {
                 <Target className="h-6 w-6 text-[hsl(var(--warning))]" />
               </div>
               <div>
-                <p className="text-2xl font-bold">72</p>
-                <p className="text-sm text-muted-foreground">Days Remaining</p>
+                <p className="text-2xl font-bold">85%</p>
+                <p className="text-sm text-muted-foreground">Practice Accuracy</p>
               </div>
             </div>
           </CardContent>
