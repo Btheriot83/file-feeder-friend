@@ -18,8 +18,8 @@ export const WelcomeSection = () => {
             Learn Claude Code on the go
           </h2>
           <p className="text-white/90 mb-6 max-w-2xl">
-            Transform from a beginner to a production-ready Claude Code expert through our comprehensive, 
-            hands-on curriculum designed by industry professionals.
+            Transform from having no clue at all to being a Claude Code boss through our comprehensive, 
+            hands-on curriculum designed by a guy who knew how to prompt really well.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button 
