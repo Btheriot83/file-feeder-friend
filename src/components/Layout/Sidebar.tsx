@@ -126,17 +126,15 @@ export const Sidebar = () => {
               </Button>
             );
           })}
-        </div>
-      </div>
-
-      {/* Separate Use Case Section */}
-      <div className="border-t bg-muted/30">
-        <div className="p-4">
-          <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">Resources</h4>
-          <Button variant="outline" className="w-full justify-start gap-2 bg-background border-[hsl(var(--primary))]/20 hover:bg-[hsl(var(--primary))]/5">
-            <BookOpen className="h-4 w-4" />
-            Use Case Library
-          </Button>
+          
+          {/* Resources Section - Directly under Module 12 */}
+          <div className="mt-6 pt-4 border-t border-muted">
+            <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">Resources</h4>
+            <Button variant="outline" className="w-full justify-start gap-2 bg-background border-[hsl(var(--primary))]/20 hover:bg-[hsl(var(--primary))]/5">
+              <BookOpen className="h-4 w-4" />
+              Use Case Library
+            </Button>
+          </div>
         </div>
       </div>
     </aside>
