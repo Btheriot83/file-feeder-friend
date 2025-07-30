@@ -150,7 +150,7 @@ export const Sidebar = () => {
                       {module.badge && (
                         <Badge 
                           variant={module.badge === "✓" ? "default" : "secondary"}
-                          className="text-xs px-2 py-0"
+                          className="text-xs px-1.5 py-0.5"
                         >
                           {module.badge}
                         </Badge>
