@@ -1,8 +1,10 @@
-import { ArrowRight, CheckCircle, Clock, Play } from "lucide-react";
+import { ArrowRight, CheckCircle, Clock, Play, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useState } from "react";
 
 export const CurrentModule = () => {
   const lessons = [
@@ -12,6 +14,21 @@ export const CurrentModule = () => {
     { id: 4, title: "Understanding AI Responses", completed: false, duration: "22 min" },
     { id: 5, title: "Building Your First App", completed: false, duration: "35 min" },
   ];
+
+  const currentLessonTasks = [
+    { id: 1, title: "Learn prompt structure basics", completed: true, subtasks: ["Read about clear instructions", "Practice with examples"] },
+    { id: 2, title: "Practice clear instructions", completed: true, subtasks: ["Write 3 different prompts", "Compare results"] },
+    { id: 3, title: "Try different prompt styles", completed: false, subtasks: ["Test conversational style", "Try step-by-step format", "Experiment with examples"] },
+    { id: 4, title: "Test prompt variations", completed: false, subtasks: ["Modify existing prompts", "Analyze response quality"] }
+  ];
+
+  const [taskStates, setTaskStates] = useState(
+    currentLessonTasks.reduce((acc, task) => ({ ...acc, [task.id]: task.completed }), {})
+  );
+
+  const handleTaskToggle = (taskId: number) => {
+    setTaskStates(prev => ({ ...prev, [taskId]: !prev[taskId] }));
+  };
 
   const completedLessons = lessons.filter(l => l.completed).length;
   const progress = (completedLessons / lessons.length) * 100;
@@ -87,6 +104,53 @@ export const CurrentModule = () => {
             )}
           </div>
         ))}
+        
+        {/* Current Lesson Tasks */}
+        <div className="pt-6 border-t">
+          <div className="flex items-center gap-2 mb-4">
+            <Target className="h-5 w-5 text-[hsl(var(--primary))]" />
+            <h3 className="text-lg font-semibold">First Prompt Engineering - Tasks</h3>
+          </div>
+          
+          <div className="space-y-3">
+            {currentLessonTasks.map((task) => (
+              <div key={task.id} className="p-4 rounded-lg border bg-background">
+                <div className="flex items-start gap-3 mb-3">
+                  <Checkbox 
+                    checked={taskStates[task.id] || false}
+                    onCheckedChange={() => handleTaskToggle(task.id)}
+                    className="mt-0.5"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className={`font-medium ${
+                        taskStates[task.id] ? 'line-through text-muted-foreground' : 'text-foreground'
+                      }`}>
+                        {task.title}
+                      </span>
+                      <Badge 
+                        variant={taskStates[task.id] ? "default" : "secondary"} 
+                        className="text-xs"
+                      >
+                        {taskStates[task.id] ? "Completed" : "In Progress"}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Subtasks */}
+                <div className="ml-6 space-y-2">
+                  {task.subtasks.map((subtask, index) => (
+                    <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <div className="w-2 h-2 rounded-full bg-[hsl(var(--primary))]/40"></div>
+                      <span>{subtask}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         
         <div className="pt-4 border-t">
           <Button className="w-full" size="lg">
