@@ -50,22 +50,30 @@ export const Sidebar = () => {
             </div>
           </div>
           
-          {/* Progress Bar */}
+          {/* Progress Bar with Scratch & Reveal */}
           <div className="relative">
             <Progress value={overallProgress} className="h-4" />
             <div 
               className="absolute top-0 left-0 h-4 progress-bar rounded-full transition-all duration-1000 animate-fade-in"
               style={{ width: `${overallProgress}%` }}
             />
+            {/* Scratch & Reveal Overlay */}
+            {overallProgress === 100 && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full animate-fade-in">
+                <span className="text-xs font-bold text-yellow-900">Claude Code Master</span>
+              </div>
+            )}
           </div>
           
-          {/* Bottom Row */}
-          <div className="flex items-center justify-between pt-1">
+          {/* Bottom Messages - Separated */}
+          <div className="space-y-2 pt-1">
             <div className="flex items-center gap-1">
               <span className="text-[hsl(var(--success))] font-medium text-sm">You've got this!</span>
               <span className="text-sm">🔥</span>
             </div>
-            <span className="text-muted-foreground text-xs">No procrastination zone 🛠️</span>
+            <div className="text-right">
+              <span className="text-muted-foreground text-xs">No procrastination zone 🛠️</span>
+            </div>
           </div>
         </div>
       </div>
