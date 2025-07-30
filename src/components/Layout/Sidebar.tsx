@@ -84,17 +84,17 @@ export const Sidebar = () => {
         <div className="space-y-1 max-w-full overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between mb-0.5 w-full min-w-0">
-            <h3 className="font-bold text-xs bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent truncate flex-1 min-w-0">
-              Your Journey
-            </h3>
-            <div className="flex items-center gap-1 flex-shrink-0 ml-2">
+            <div className="flex items-center gap-1 flex-shrink-0">
               <span className="text-xs font-bold text-[hsl(var(--primary))] whitespace-nowrap">{Math.round(overallProgress)}%</span>
               <span className="text-xs">🚀</span>
             </div>
+            <h3 className="font-bold text-xs bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent truncate flex-1 min-w-0 text-right">
+              Your Journey
+            </h3>
           </div>
           
           {/* Progress Bar with Scratch & Reveal */}
-          <div className="relative mb-1 w-full">
+          <div className="relative mb-1 w-full pr-2">
             <Progress value={overallProgress} className="h-2 w-full" />
             <div 
               className="absolute top-0 left-0 h-2 progress-bar rounded-full transition-all duration-1000"
@@ -102,7 +102,7 @@ export const Sidebar = () => {
             />
             {/* Gold Master Badge - shows when 100% complete */}
             {overallProgress === 100 && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-2xl animate-pulse hover-scale">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-2xl animate-pulse hover-scale mr-2">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 rounded-full animate-pulse opacity-75"></div>
                 <span className="relative text-xs font-bold text-yellow-900 tracking-tight px-1 animate-fade-in whitespace-nowrap">✨ MASTER ✨</span>
               </div>
