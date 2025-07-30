@@ -9,11 +9,6 @@ export const WelcomeSection = () => {
       {/* Hero Section */}
       <div className="relative overflow-hidden rounded-2xl gradient-primary p-8 text-white shadow-glow">
         <div className="relative z-10">
-          <div className="flex items-center gap-2 mb-4">
-            <Badge variant="secondary" className="bg-white/20 text-white border-0">
-              Module 2 • Foundation Phase
-            </Badge>
-          </div>
           <h2 className="text-3xl font-bold mb-2">
             See it. Do it. Learn it. Fast.
           </h2>
