@@ -82,8 +82,8 @@ export const WelcomeSection = () => {
                 <Target className="h-6 w-6 text-[hsl(var(--warning))]" />
               </div>
               <div>
-                <p className="text-2xl font-bold">85%</p>
-                <p className="text-sm text-muted-foreground">Practice Accuracy</p>
+                <p className="text-2xl font-bold">Expert</p>
+                <p className="text-sm text-muted-foreground">Skill Mastery Level</p>
               </div>
             </div>
           </CardContent>
