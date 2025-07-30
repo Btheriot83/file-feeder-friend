@@ -59,7 +59,7 @@ export const Sidebar = () => {
             <span className="text-[hsl(var(--success))] font-medium animate-fade-in">
               You've got this! 🔥
             </span>
-            <span className="text-muted-foreground">No procrastination zone</span>
+            <span className="text-muted-foreground">🛠️ No procrastination zone</span>
           </div>
         </div>
       </div>
