@@ -18,7 +18,7 @@ export const WelcomeSection = () => {
             Learn Claude Code on the go
           </h2>
           <p className="text-white/90 mb-6 max-w-2xl">
-            Transform from having no clue at all to being a Claude Code boss through our comprehensive, 
+            See it. Do it. Learn it. Fast. Transform from having no clue at all to being a Claude Code boss through our comprehensive, 
             hands-on curriculum designed by a guy who knew how to prompt really well.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -26,7 +26,7 @@ export const WelcomeSection = () => {
               size="lg" 
               className="bg-white text-[hsl(var(--primary))] hover:bg-white/90 shadow-elegant"
             >
-              Continue Learning
+              Let's Build
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button 
@@ -35,7 +35,7 @@ export const WelcomeSection = () => {
               className="border-white/30 text-white hover:bg-white/10 bg-white/5"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              View Progress
+              See My Journey
             </Button>
           </div>
         </div>

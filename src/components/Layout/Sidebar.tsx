@@ -17,10 +17,10 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 
 const modules = [
-  { id: 1, title: "So what in the actual hell is Claude Code?", icon: Brain, progress: 100, badge: "✓" },
-  { id: 2, title: "The Magic Behind the Curtain", icon: Zap, progress: 85, badge: "Current" },
-  { id: 3, title: "Who's Really in Control Here?", icon: Target, progress: 60, badge: null },
-  { id: 4, title: "Terminal Wizardry & Command Line Kung Fu", icon: Code, progress: 0, badge: null },
+  { id: 1, title: "What the Hell is Claude Code?", icon: Brain, progress: 100, badge: "✓" },
+  { id: 2, title: "Under the Hood Secrets", icon: Zap, progress: 85, badge: "Current" },
+  { id: 3, title: "Taking the Wheel", icon: Target, progress: 60, badge: null },
+  { id: 4, title: "Terminal Ninja Skills", icon: Code, progress: 0, badge: null },
   { id: 5, title: "Level Up: Advanced Mind Tricks", icon: Puzzle, progress: 0, badge: null },
   { id: 6, title: "Building Stuff That Doesn't Suck", icon: BookOpen, progress: 0, badge: null },
   { id: 7, title: "When Things Go Horribly Wrong", icon: Bug, progress: 0, badge: null },
