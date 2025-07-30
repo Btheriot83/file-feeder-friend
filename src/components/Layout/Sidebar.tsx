@@ -67,13 +67,13 @@ export const Sidebar = () => {
           
           {/* Motivational Messages - Properly Spaced */}
           <div className="space-y-2">
-            <div className="flex items-center justify-start">
-              <span className="text-[hsl(var(--success))] font-semibold text-sm">You've got this!</span>
-              <span className="ml-2 text-base">🔥</span>
-            </div>
             <div className="flex items-center justify-end">
-              <span className="text-muted-foreground font-medium text-xs">No procrastination zone</span>
-              <span className="ml-1 text-sm">🛠️</span>
+              <span className="text-muted-foreground font-medium text-sm">No procrastination zone</span>
+              <span className="ml-1 text-base">🛠️</span>
+            </div>
+            <div className="flex items-center justify-start">
+              <span className="text-[hsl(var(--success))] font-semibold text-base">You've got this!</span>
+              <span className="ml-2 text-lg">🔥</span>
             </div>
           </div>
         </div>
