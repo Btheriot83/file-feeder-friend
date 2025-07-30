@@ -80,22 +80,22 @@ export const Sidebar = () => {
   return (
     <aside className="hidden md:flex w-72 bg-card border-r flex-col">
       {/* Progress Overview */}
-      <div className="px-1 py-2 border-b bg-gradient-to-br from-background to-muted/30">
-        <div className="space-y-1">
+      <div className="px-2 py-2 border-b bg-gradient-to-br from-background to-muted/30">
+        <div className="space-y-1 max-w-full overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between mb-0.5 w-full">
-            <h3 className="font-bold text-xs bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent flex-shrink">
+          <div className="flex items-center justify-between mb-0.5 w-full min-w-0">
+            <h3 className="font-bold text-xs bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent truncate flex-1 min-w-0">
               Your Journey
             </h3>
-            <div className="flex items-center gap-0.5 flex-shrink-0">
-              <span className="text-sm font-bold text-[hsl(var(--primary))] whitespace-nowrap">{Math.round(overallProgress)}%</span>
+            <div className="flex items-center gap-1 flex-shrink-0 ml-2">
+              <span className="text-xs font-bold text-[hsl(var(--primary))] whitespace-nowrap">{Math.round(overallProgress)}%</span>
               <span className="text-xs">🚀</span>
             </div>
           </div>
           
           {/* Progress Bar with Scratch & Reveal */}
           <div className="relative mb-1 w-full">
-            <Progress value={overallProgress} className="h-2" />
+            <Progress value={overallProgress} className="h-2 w-full" />
             <div 
               className="absolute top-0 left-0 h-2 progress-bar rounded-full transition-all duration-1000"
               style={{ width: `${overallProgress}%` }}
@@ -104,20 +104,20 @@ export const Sidebar = () => {
             {overallProgress === 100 && (
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-2xl animate-pulse hover-scale">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 rounded-full animate-pulse opacity-75"></div>
-                <span className="relative text-xs font-bold text-yellow-900 tracking-wide px-1 animate-fade-in">✨ CLAUDE CODE MASTER ✨</span>
+                <span className="relative text-xs font-bold text-yellow-900 tracking-tight px-1 animate-fade-in whitespace-nowrap">✨ MASTER ✨</span>
               </div>
             )}
           </div>
           
           {/* Motivational Messages - Properly Spaced */}
           <div className="space-y-1">
-            <div className="flex items-center justify-center">
-              <span className="text-muted-foreground font-medium text-xs">No procrastination zone</span>
-              <span className="ml-1 text-base">🛠️</span>
+            <div className="flex items-center justify-center text-center">
+              <span className="text-muted-foreground font-medium text-xs">No procrastination</span>
+              <span className="ml-1 text-xs">🛠️</span>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center text-center">
               <span className="text-[hsl(var(--success))] font-semibold text-xs">You've got this!</span>
-              <span className="ml-2 text-base">🔥</span>
+              <span className="ml-1 text-xs">🔥</span>
             </div>
           </div>
         </div>
