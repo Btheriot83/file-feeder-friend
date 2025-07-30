@@ -41,7 +41,7 @@ const Index = () => {
         <aside className="w-full md:w-1/4 hidden md:block md:sticky md:top-0 md:h-screen md:overflow-y-auto">
           <Sidebar />
         </aside>
-        <main className="w-full md:w-3/4 p-4 md:p-6 space-y-6 pb-20 md:pb-6 overflow-y-auto">
+        <main className="w-full md:w-3/4 p-2 md:p-4 space-y-4 pb-20 md:pb-4 overflow-y-auto">
           <WelcomeSection />
           <CurrentModule />
         </main>
