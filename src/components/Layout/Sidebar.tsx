@@ -65,7 +65,7 @@ export const Sidebar = () => {
               <span className="text-[hsl(var(--success))] font-medium text-sm">You've got this!</span>
               <span className="text-sm">🔥</span>
             </div>
-            <span className="text-muted-foreground text-xs">🛠️ No procrastination zone</span>
+            <span className="text-muted-foreground text-xs">No procrastination zone 🛠️</span>
           </div>
         </div>
       </div>
