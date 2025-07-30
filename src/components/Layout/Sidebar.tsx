@@ -80,21 +80,21 @@ export const Sidebar = () => {
   return (
     <aside className="hidden md:flex w-80 bg-card border-r flex-col">
       {/* Progress Overview */}
-      <div className="p-6 border-b bg-gradient-to-br from-background to-muted/30">
-        <div className="space-y-4">
+      <div className="p-3 border-b bg-gradient-to-br from-background to-muted/30">
+        <div className="space-y-3">
           {/* Header */}
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-bold text-lg bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+          <div className="flex items-center justify-between mb-1">
+            <h3 className="font-bold text-base bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
               Your Journey
             </h3>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-[hsl(var(--primary))]">{Math.round(overallProgress)}%</span>
+            <div className="flex items-center gap-1">
+              <span className="text-xl font-bold text-[hsl(var(--primary))]">{Math.round(overallProgress)}%</span>
               <span className="text-lg">🚀</span>
             </div>
           </div>
           
           {/* Progress Bar with Scratch & Reveal */}
-          <div className="relative mb-4">
+          <div className="relative mb-3">
             <Progress value={overallProgress} className="h-4" />
             <div 
               className="absolute top-0 left-0 h-4 progress-bar rounded-full transition-all duration-1000"
@@ -110,13 +110,13 @@ export const Sidebar = () => {
           </div>
           
           {/* Motivational Messages - Properly Spaced */}
-          <div className="space-y-2">
+          <div className="space-y-1">
             <div className="flex items-center justify-center">
-              <span className="text-muted-foreground font-medium text-base">No procrastination zone</span>
+              <span className="text-muted-foreground font-medium text-sm">No procrastination zone</span>
               <span className="ml-1 text-lg">🛠️</span>
             </div>
             <div className="flex items-center justify-center">
-              <span className="text-[hsl(var(--success))] font-semibold text-base">You've got this!</span>
+              <span className="text-[hsl(var(--success))] font-semibold text-sm">You've got this!</span>
               <span className="ml-2 text-lg">🔥</span>
             </div>
           </div>
@@ -125,29 +125,29 @@ export const Sidebar = () => {
 
       {/* Module List */}
       <div className="flex-1 overflow-y-auto">
-        <div className="p-4 space-y-2">
-          <h4 className="text-sm font-medium text-muted-foreground mb-3">Learning Modules</h4>
+        <div className="p-2 space-y-1">
+          <h4 className="text-xs font-medium text-muted-foreground mb-2 px-2">Learning Modules</h4>
           {modules.map((module) => {
             const Icon = module.icon;
             return (
               <Button
                 key={module.id}
                 variant={module.progress > 0 ? "secondary" : "ghost"}
-                className="w-full justify-start p-3 h-auto transition-smooth hover:shadow-elegant"
+                className="w-full justify-start p-2 h-auto transition-smooth hover:shadow-elegant"
               >
-                <div className="flex items-center gap-3 w-full">
-                  <div className={`p-2 rounded-lg ${
+                <div className="flex items-center gap-2 w-full">
+                  <div className={`p-1.5 rounded-lg ${
                     module.progress === 100 
                       ? 'bg-[hsl(var(--success))] text-white' 
                       : module.progress > 0 
                         ? 'gradient-primary text-white'
                         : 'bg-muted text-muted-foreground'
                   }`}>
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-3 w-3" />
                   </div>
                   <div className="flex-1 text-left">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium">{module.title}</span>
+                      <span className="text-xs font-medium">{module.title}</span>
                     </div>
                     {module.progress > 0 && (
                       <div className="w-full bg-muted rounded-full h-1.5 mb-2">
