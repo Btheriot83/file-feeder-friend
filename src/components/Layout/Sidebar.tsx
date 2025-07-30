@@ -21,9 +21,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 
 const modules = [
-  { id: 1, title: "What the Hell is Claude Code?", icon: Brain, progress: 100, badge: "✓" },
-  { id: 2, title: "Under the Hood Secrets", icon: Zap, progress: 85, badge: "Current" },
-  { id: 3, title: "Taking the Wheel", icon: Target, progress: 60, badge: null },
+  { id: 1, title: "What the Hell is Claude Code?", icon: Brain, progress: 40, badge: "Current" },
+  { id: 2, title: "Under the Hood Secrets", icon: Zap, progress: 0, badge: null },
+  { id: 3, title: "Taking the Wheel", icon: Target, progress: 0, badge: null },
   { id: 4, title: "Terminal Ninja Skills", icon: Code, progress: 0, badge: null },
   { id: 5, title: "Advanced Power Moves", icon: Puzzle, progress: 0, badge: null },
   { id: 6, title: "Build Epic Projects", icon: BookOpen, progress: 0, badge: null },
@@ -37,6 +37,15 @@ const modules = [
 
 // Current lesson tasks based on the active module
 const currentLessonTasks = {
+  1: { // "What the Hell is Claude Code?" module
+    title: "First Prompt Engineering",
+    tasks: [
+      { id: 1, title: "Learn prompt structure basics", completed: true, clickable: true },
+      { id: 2, title: "Practice clear instructions", completed: true, clickable: true },
+      { id: 3, title: "Try different prompt styles", completed: false, clickable: true },
+      { id: 4, title: "Test prompt variations", completed: false, clickable: false }
+    ]
+  },
   2: { // "Under the Hood Secrets" module
     title: "Understanding AI Architecture",
     tasks: [
@@ -51,7 +60,7 @@ const currentLessonTasks = {
 
 export const Sidebar = () => {
   const overallProgress = 100; // Temporarily set to 100% to preview the gold master badge
-  const currentModuleId = 2; // "Under the Hood Secrets" - the current active module
+  const currentModuleId = 1; // "What the Hell is Claude Code?" - the current active module
   const currentTasks = currentLessonTasks[currentModuleId];
   const [taskStates, setTaskStates] = useState(
     currentTasks?.tasks.reduce((acc, task) => ({ ...acc, [task.id]: task.completed }), {}) || {}
