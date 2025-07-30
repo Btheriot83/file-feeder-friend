@@ -80,31 +80,31 @@ export const Sidebar = () => {
   return (
     <aside className="hidden md:flex w-80 bg-card border-r flex-col">
       {/* Progress Overview */}
-      <div className="p-3 border-b bg-gradient-to-br from-background to-muted/30">
-        <div className="space-y-3">
+      <div className="p-2 border-b bg-gradient-to-br from-background to-muted/30">
+        <div className="space-y-2">
           {/* Header */}
           <div className="flex items-center justify-between mb-1">
-            <h3 className="font-bold text-base bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+            <h3 className="font-bold text-sm bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
               Your Journey
             </h3>
             <div className="flex items-center gap-1">
-              <span className="text-xl font-bold text-[hsl(var(--primary))]">{Math.round(overallProgress)}%</span>
-              <span className="text-lg">🚀</span>
+              <span className="text-lg font-bold text-[hsl(var(--primary))]">{Math.round(overallProgress)}%</span>
+              <span className="text-base">🚀</span>
             </div>
           </div>
           
           {/* Progress Bar with Scratch & Reveal */}
-          <div className="relative mb-3">
-            <Progress value={overallProgress} className="h-4" />
+          <div className="relative mb-2">
+            <Progress value={overallProgress} className="h-3" />
             <div 
-              className="absolute top-0 left-0 h-4 progress-bar rounded-full transition-all duration-1000"
+              className="absolute top-0 left-0 h-3 progress-bar rounded-full transition-all duration-1000"
               style={{ width: `${overallProgress}%` }}
             />
             {/* Gold Master Badge - shows when 100% complete */}
             {overallProgress === 100 && (
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-2xl animate-pulse hover-scale">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 rounded-full animate-pulse opacity-75"></div>
-                <span className="relative text-sm font-bold text-yellow-900 tracking-wide px-2 animate-fade-in">✨ CLAUDE CODE MASTER ✨</span>
+                <span className="relative text-xs font-bold text-yellow-900 tracking-wide px-1 animate-fade-in">✨ CLAUDE CODE MASTER ✨</span>
               </div>
             )}
           </div>
@@ -112,12 +112,12 @@ export const Sidebar = () => {
           {/* Motivational Messages - Properly Spaced */}
           <div className="space-y-1">
             <div className="flex items-center justify-center">
-              <span className="text-muted-foreground font-medium text-sm">No procrastination zone</span>
-              <span className="ml-1 text-lg">🛠️</span>
+              <span className="text-muted-foreground font-medium text-xs">No procrastination zone</span>
+              <span className="ml-1 text-base">🛠️</span>
             </div>
             <div className="flex items-center justify-center">
-              <span className="text-[hsl(var(--success))] font-semibold text-sm">You've got this!</span>
-              <span className="ml-2 text-lg">🔥</span>
+              <span className="text-[hsl(var(--success))] font-semibold text-xs">You've got this!</span>
+              <span className="ml-2 text-base">🔥</span>
             </div>
           </div>
         </div>
