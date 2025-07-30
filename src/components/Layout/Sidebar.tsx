@@ -39,15 +39,18 @@ export const Sidebar = () => {
       {/* Progress Overview */}
       <div className="p-6 border-b bg-gradient-to-br from-background to-muted/30">
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-2">
             <h3 className="font-bold text-lg bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
               Your Journey
             </h3>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-[hsl(var(--primary))]">{Math.round(overallProgress)}%</span>
-              <span className="text-xl">🚀</span>
+              <span className="text-lg">🚀</span>
             </div>
           </div>
+          
+          {/* Progress Bar */}
           <div className="relative">
             <Progress value={overallProgress} className="h-4" />
             <div 
@@ -55,11 +58,14 @@ export const Sidebar = () => {
               style={{ width: `${overallProgress}%` }}
             />
           </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-[hsl(var(--success))] font-medium animate-fade-in">
-              You've got this! 🔥
-            </span>
-            <span className="text-muted-foreground ml-2">🛠️ No procrastination zone</span>
+          
+          {/* Bottom Row */}
+          <div className="flex items-center justify-between pt-1">
+            <div className="flex items-center gap-1">
+              <span className="text-[hsl(var(--success))] font-medium text-sm">You've got this!</span>
+              <span className="text-sm">🔥</span>
+            </div>
+            <span className="text-muted-foreground text-xs">🛠️ No procrastination zone</span>
           </div>
         </div>
       </div>
