@@ -6,11 +6,11 @@ import { Badge } from "@/components/ui/badge";
 
 export const CurrentModule = () => {
   const lessons = [
-    { id: 1, title: "Installation & Setup", completed: true, duration: "15 min" },
-    { id: 2, title: "Authentication & Billing", completed: true, duration: "10 min" },
-    { id: 3, title: "IDE Integration", completed: true, duration: "20 min" },
-    { id: 4, title: "Your First Session", completed: false, duration: "30 min", current: true },
-    { id: 5, title: "Code Generation Patterns", completed: false, duration: "25 min" },
+    { id: 1, title: "What is Claude Code?", completed: true, duration: "12 min" },
+    { id: 2, title: "Getting Access & Account Setup", completed: true, duration: "8 min" },
+    { id: 3, title: "First Prompt Engineering", completed: false, duration: "18 min", current: true },
+    { id: 4, title: "Understanding AI Responses", completed: false, duration: "22 min" },
+    { id: 5, title: "Building Your First App", completed: false, duration: "35 min" },
   ];
 
   const completedLessons = lessons.filter(l => l.completed).length;
@@ -22,11 +22,11 @@ export const CurrentModule = () => {
         <div className="flex items-center justify-between">
           <div>
             <CardTitle className="flex items-center gap-2">
-              Module 2: Core Mechanics
+              Module 1: What the Hell is Claude Code?
               <Badge variant="secondary">In Progress</Badge>
             </CardTitle>
             <p className="text-muted-foreground mt-1">
-              Learn the fundamental mechanics of Claude Code
+              Discover the power of AI-assisted coding and get started with Claude Code
             </p>
           </div>
           <div className="text-right">
