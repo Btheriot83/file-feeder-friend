@@ -127,13 +127,34 @@ export const Sidebar = () => {
             );
           })}
           
-          {/* Resources Section - Directly under Module 12 */}
+          {/* Current Module Tasks */}
           <div className="mt-6 pt-4 border-t border-muted">
-            <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">Resources</h4>
-            <Button variant="outline" className="w-full justify-start gap-2 bg-background border-[hsl(var(--primary))]/20 hover:bg-[hsl(var(--primary))]/5">
-              <BookOpen className="h-4 w-4" />
-              Use Case Library
-            </Button>
+            <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">Current Module Tasks</h4>
+            <div className="space-y-2">
+              <div className="p-3 rounded-lg bg-background border border-[hsl(var(--primary))]/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-[hsl(var(--primary))]"></div>
+                  <span className="text-sm font-medium">Understanding AI Code Generation</span>
+                </div>
+                <p className="text-xs text-muted-foreground mb-2">Learn the fundamentals of how Claude Code works under the hood</p>
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="text-xs">In Progress</Badge>
+                  <span className="text-xs text-muted-foreground">2/4 subtasks</span>
+                </div>
+              </div>
+              
+              <div className="p-3 rounded-lg bg-muted/50 border border-muted">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-muted-foreground"></div>
+                  <span className="text-sm font-medium text-muted-foreground">Practice: Code Review</span>
+                </div>
+                <p className="text-xs text-muted-foreground mb-2">Review and analyze AI-generated code samples</p>
+                <div className="flex items-center gap-2">
+                  <Badge variant="secondary" className="text-xs">Upcoming</Badge>
+                  <span className="text-xs text-muted-foreground">0/3 subtasks</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
