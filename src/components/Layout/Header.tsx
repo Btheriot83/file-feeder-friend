@@ -20,7 +20,7 @@ export const Header = () => {
               <h1 className="text-xl font-bold bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
                 ClaudeCode Mastery
               </h1>
-              <p className="text-xs text-muted-foreground">Code Mastery Program</p>
+              <p className="text-xs text-muted-foreground">0 to Hero Coding Program</p>
             </div>
           </div>
         </div>
