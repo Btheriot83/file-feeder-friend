@@ -78,18 +78,18 @@ export const Sidebar = () => {
   };
 
   return (
-    <aside className="hidden md:flex w-80 bg-card border-r flex-col">
+    <aside className="hidden md:flex w-72 bg-card border-r flex-col">
       {/* Progress Overview */}
-      <div className="px-3 py-2 border-b bg-gradient-to-br from-background to-muted/30">
+      <div className="px-2 py-2 border-b bg-gradient-to-br from-background to-muted/30">
         <div className="space-y-2">
           {/* Header */}
           <div className="flex items-center justify-between mb-1 w-full">
-            <h3 className="font-bold text-sm bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent flex-shrink">
+            <h3 className="font-bold text-xs bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent flex-shrink">
               Your Journey
             </h3>
             <div className="flex items-center gap-1 flex-shrink-0">
-              <span className="text-lg font-bold text-[hsl(var(--primary))] whitespace-nowrap">{Math.round(overallProgress)}%</span>
-              <span className="text-base">🚀</span>
+              <span className="text-base font-bold text-[hsl(var(--primary))] whitespace-nowrap">{Math.round(overallProgress)}%</span>
+              <span className="text-sm">🚀</span>
             </div>
           </div>
           
