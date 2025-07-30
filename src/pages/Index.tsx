@@ -35,37 +35,39 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-16 md:pb-0">
+    <div className="min-h-screen bg-background">
       <Header />
-      <div {...handlers} className="flex flex-col md:flex-row">
-        <aside className="w-full md:w-1/4 hidden md:block">
+      <div {...handlers} className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)]">
+        <aside className="w-full md:w-1/4 hidden md:block md:sticky md:top-0 md:h-screen md:overflow-y-auto">
           <Sidebar />
         </aside>
-        <main className="w-full md:w-3/4 p-4 md:p-6 space-y-6">
+        <main className="w-full md:w-3/4 p-4 md:p-6 space-y-6 pb-20 md:pb-6 overflow-y-auto">
           <WelcomeSection />
           <CurrentModule />
         </main>
       </div>
       
       {/* Mobile Bottom Tab Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-background border-t md:hidden flex justify-around p-2 z-50">
-        {tabItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors ${
-                activeTab === item.id
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <Icon className="h-5 w-5" />
-              <span className="text-xs font-medium">{item.label}</span>
-            </button>
-          );
-        })}
+      <nav className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border md:hidden z-50 h-16">
+        <div className="flex justify-around items-center h-full px-2">
+          {tabItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`flex flex-col items-center justify-center space-y-1 p-2 rounded-lg transition-colors min-h-[3rem] ${
+                  activeTab === item.id
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Icon className="h-4 w-4" />
+                <span className="text-xs font-medium">{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </nav>
     </div>
   );
