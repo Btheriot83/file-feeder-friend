@@ -1,77 +1,72 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Progress } from '@/components/ui/progress';
-import { Switch } from '@/components/ui/switch';
-import { Upload, Share2, Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
+import { Header } from "@/components/Layout/Header";
+import { Sidebar } from "@/components/Layout/Sidebar";
+import { WelcomeSection } from "@/components/Dashboard/WelcomeSection";
+import { CurrentModule } from "@/components/Dashboard/CurrentModule";
+import { Home, BookOpen, Library, Users, User } from "lucide-react";
 
 const Index = () => {
-  const [file, setFile] = useState<File | null>(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const { theme, setTheme } = useTheme();
+  const [currentModule, setCurrentModule] = useState(0);
+  const [activeTab, setActiveTab] = useState("home");
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-      simulateUpload();
-    }
+  const navigateNextModule = () => {
+    // Add logic to navigate to next module
+    console.log("Navigate to next module");
   };
 
-  const simulateUpload = () => {
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      setUploadProgress(progress);
-      if (progress >= 100) clearInterval(interval);
-    }, 300);
-    // In real: Feed file to Claude API via fetch/post
+  const navigatePrevModule = () => {
+    // Add logic to navigate to previous module
+    console.log("Navigate to previous module");
   };
 
-  const handleShare = () => {
-    alert('Sharing file processing results...'); // Integrate with social APIs
-  };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => navigateNextModule(),
+    onSwipedRight: () => navigatePrevModule(),
+    trackMouse: true,
+  });
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  const tabItems = [
+    { id: "home", label: "Home", icon: Home },
+    { id: "lessons", label: "Lessons", icon: BookOpen },
+    { id: "library", label: "Library", icon: Library },
+    { id: "social", label: "Social", icon: Users },
+    { id: "profile", label: "Profile", icon: User },
+  ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="p-4 border-b flex justify-between items-center">
-        <h1 className="text-2xl font-bold">File Feeder Friend</h1>
-        <div className="flex items-center gap-2">
-          <Sun className="h-4 w-4" />
-          <Switch checked={theme === 'dark'} onCheckedChange={toggleTheme} />
-          <Moon className="h-4 w-4" />
-        </div>
-      </header>
-      <main className="container mx-auto p-4 space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Dashboard</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Progress value={uploadProgress} className="w-full" />
-            <p className="mt-2">Upload Progress: {uploadProgress}%</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Feed a File</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Input type="file" onChange={handleFileChange} className="max-w-md" />
-            <Button disabled={!file}>
-              <Upload className="mr-2 h-4 w-4" /> Feed to Friend (Claude)
-            </Button>
-            <Button variant="outline" onClick={handleShare}>
-              <Share2 className="mr-2 h-4 w-4" /> Share Results
-            </Button>
-          </CardContent>
-        </Card>
-      </main>
+    <div className="min-h-screen bg-background pb-16 md:pb-0">
+      <Header />
+      <div {...handlers} className="flex flex-col md:flex-row">
+        <aside className="w-full md:w-1/4 hidden md:block">
+          <Sidebar />
+        </aside>
+        <main className="w-full md:w-3/4 p-4 md:p-6 space-y-6">
+          <WelcomeSection />
+          <CurrentModule />
+        </main>
+      </div>
+      
+      {/* Mobile Bottom Tab Bar */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-background border-t md:hidden flex justify-around p-2 z-50">
+        {tabItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors ${
+                activeTab === item.id
+                  ? "text-primary bg-primary/10"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <Icon className="h-5 w-5" />
+              <span className="text-xs font-medium">{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
     </div>
   );
 };
