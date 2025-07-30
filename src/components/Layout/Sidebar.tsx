@@ -185,17 +185,19 @@ export const Sidebar = () => {
                       onClick={(e) => e.stopPropagation()}
                     />
                     <div className="flex-1">
-                      <span className={`text-sm ${
-                        taskStates[task.id] ? 'line-through text-muted-foreground' : 'text-foreground'
-                      }`}>
-                        {task.title}
-                      </span>
-                      {task.clickable && (
-                        <div className="flex items-center gap-1 mt-1">
-                          <Circle className="h-2 w-2 fill-[hsl(var(--primary))] text-[hsl(var(--primary))]" />
-                          <span className="text-xs text-[hsl(var(--primary))]">Interactive</span>
-                        </div>
-                      )}
+                      <div className="flex items-center justify-between">
+                        <span className={`text-sm ${
+                          taskStates[task.id] ? 'line-through text-muted-foreground' : 'text-foreground'
+                        }`}>
+                          {task.title}
+                        </span>
+                        <Badge 
+                          variant={taskStates[task.id] ? "default" : "secondary"} 
+                          className="text-xs ml-2"
+                        >
+                          {taskStates[task.id] ? "Completed" : "In Progress"}
+                        </Badge>
+                      </div>
                     </div>
                   </div>
                 ))}
