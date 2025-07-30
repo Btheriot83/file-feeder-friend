@@ -1,11 +1,20 @@
-import { Code2, Menu, Search, User, Share2 } from "lucide-react";
+import { Code2, Menu, Search, User, Share2, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Switch } from "@/components/ui/switch";
+import { useTheme } from "@/components/theme-provider";
 import { useToast } from "@/hooks/use-toast";
 
 export const Header = () => {
   const { toast } = useToast();
+  const { theme, setTheme } = useTheme();
+  
+  const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  
+  const toggleDarkMode = (checked: boolean) => {
+    setTheme(checked ? 'dark' : 'light');
+  };
 
   const handleShareProgress = async () => {
     const shareData = {
@@ -76,10 +85,22 @@ export const Header = () => {
         </div>
 
         {/* User Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon" className="md:hidden">
             <Search className="h-5 w-5" />
           </Button>
+
+          {/* Dark Mode Toggle */}
+          <div className="flex items-center gap-2">
+            <Sun className="h-4 w-4 text-muted-foreground" />
+            <Switch 
+              checked={isDarkMode} 
+              onCheckedChange={toggleDarkMode} 
+              aria-label="Toggle dark mode"
+              className="data-[state=checked]:bg-primary" 
+            />
+            <Moon className="h-4 w-4 text-muted-foreground" />
+          </div>
           
           {/* Share Progress Button */}
           <Button 
