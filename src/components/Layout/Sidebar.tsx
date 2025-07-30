@@ -102,8 +102,9 @@ export const Sidebar = () => {
             />
             {/* Gold Master Badge - shows when 100% complete */}
             {overallProgress === 100 && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-lg">
-                <span className="text-xs font-bold text-yellow-900 tracking-wide">✨ CLAUDE CODE MASTER ✨</span>
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-2xl animate-pulse hover-scale">
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 rounded-full animate-pulse opacity-75"></div>
+                <span className="relative text-sm font-bold text-yellow-900 tracking-wide px-2 animate-fade-in">✨ CLAUDE CODE MASTER ✨</span>
               </div>
             )}
           </div>
