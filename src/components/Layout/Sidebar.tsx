@@ -27,8 +27,8 @@ const modules = [
   { id: 8, title: "Git Like a Boss", icon: GitBranch, progress: 0, badge: null },
   { id: 9, title: "Production Beast Mode", icon: Rocket, progress: 0, badge: null },
   { id: 10, title: "Working with Humans", icon: Users, progress: 0, badge: null },
-  { id: 11, title: "Enterprise-Grade Beast Mode", icon: Trophy, progress: 0, badge: null },
-  { id: 12, title: "The Future is Now (And It's Awesome)", icon: Lightbulb, progress: 0, badge: null },
+  { id: 11, title: "Scaling Like a Titan", icon: Trophy, progress: 0, badge: null },
+  { id: 12, title: "Hustle and Innovate", icon: Lightbulb, progress: 0, badge: null },
 ];
 
 export const Sidebar = () => {
