@@ -37,22 +37,27 @@ export const Sidebar = () => {
   return (
     <aside className="hidden md:flex w-80 bg-card border-r flex-col">
       {/* Progress Overview */}
-      <div className="p-6 border-b">
-        <div className="space-y-3">
+      <div className="p-6 border-b bg-gradient-to-br from-background to-muted/30">
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-semibold">Overall Progress</h3>
-            <span className="text-sm text-muted-foreground">{Math.round(overallProgress)}%</span>
+            <h3 className="font-bold text-lg bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+              Your Journey
+            </h3>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-[hsl(var(--primary))]">{Math.round(overallProgress)}%</span>
+              <div className="animate-pulse">🚀</div>
+            </div>
           </div>
           <div className="relative">
-            <Progress value={overallProgress} className="h-3" />
+            <Progress value={overallProgress} className="h-4" />
             <div 
-              className="absolute top-0 left-0 h-3 progress-bar rounded-full transition-all duration-1000"
+              className="absolute top-0 left-0 h-4 progress-bar rounded-full transition-all duration-1000 animate-fade-in"
               style={{ width: `${overallProgress}%` }}
             />
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>You're crushing it! 🔥</span>
-            <span>Foundation Phase</span>
+          <div className="flex justify-between text-sm">
+            <span className="text-[hsl(var(--success))] font-medium animate-fade-in">You're crushing it! 🔥</span>
+            <span className="text-muted-foreground">Building Beast Mode</span>
           </div>
         </div>
       </div>
