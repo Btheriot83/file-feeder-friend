@@ -32,7 +32,7 @@ const modules = [
 ];
 
 export const Sidebar = () => {
-  const overallProgress = modules.reduce((sum, mod) => sum + mod.progress, 0) / modules.length;
+  const overallProgress = 100; // Temporarily set to 100% to preview the gold master badge
 
   return (
     <aside className="hidden md:flex w-80 bg-card border-r flex-col">
