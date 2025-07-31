@@ -59,7 +59,7 @@ export const CurrentLevel = () => {
           </div>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="px-4 py-4">
           {/* Progress Bar */}
           <div className="w-full bg-muted rounded-full h-2 mb-6">
             <div 
