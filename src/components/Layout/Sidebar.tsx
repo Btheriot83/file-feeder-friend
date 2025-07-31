@@ -12,7 +12,8 @@ import {
   Rocket,
   Bug,
   Check,
-  Circle
+  Circle,
+  ExternalLink
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -211,14 +212,24 @@ export const Sidebar = () => {
           {/* Resources Section */}
           <div className="mt-6 pt-4 border-t border-muted">
             <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">Resources</h4>
-            <Button 
-              variant="outline" 
-              className="w-full justify-start gap-2 bg-background border-[hsl(var(--primary))]/20 hover:bg-[hsl(var(--primary))]/5"
-              onClick={() => window.location.href = '/use-case-library'}
-            >
-              <BookOpen className="h-4 w-4" />
-              Use Case Library
-            </Button>
+            <div className="space-y-2">
+              <Button 
+                variant="outline" 
+                className="w-full justify-start gap-2 bg-background border-[hsl(var(--primary))]/20 hover:bg-[hsl(var(--primary))]/5"
+                onClick={() => window.location.href = '/use-case-library'}
+              >
+                <BookOpen className="h-4 w-4" />
+                Use Case Library
+              </Button>
+              <Button 
+                variant="outline" 
+                className="w-full justify-start gap-2 bg-background border-[hsl(var(--primary))]/20 hover:bg-[hsl(var(--primary))]/5"
+                onClick={() => window.location.href = '/resources'}
+              >
+                <ExternalLink className="h-4 w-4" />
+                Essential Resources
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import UseCaseLibrary from "./pages/UseCaseLibrary";
 import SocialHub from "./pages/SocialHub";
+import EssentialResources from "./pages/EssentialResources";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/use-case-library" element={<UseCaseLibrary />} />
             <Route path="/social" element={<SocialHub />} />
+            <Route path="/resources" element={<EssentialResources />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
