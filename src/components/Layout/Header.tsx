@@ -18,8 +18,8 @@ export const Header = () => {
 
   const handleShareProgress = async () => {
     const shareData = {
-      title: 'My ClaudeCode Mastery Progress',
-      text: '🚀 100% Claude Code Master! Join me on this amazing coding journey.',
+      title: 'My Learn Claude Code Progress',
+      text: '🚀 100% Claude Code Master! Join me learning Claude Code on the go.',
       url: window.location.href
     };
 
@@ -66,7 +66,7 @@ export const Header = () => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
-                ClaudeCode Mastery
+                Learn Claude Code on the go
               </h1>
               <p className="text-xs text-muted-foreground">0 to Hero Coding Program</p>
             </div>
