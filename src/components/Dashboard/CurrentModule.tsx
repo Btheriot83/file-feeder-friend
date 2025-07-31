@@ -1,39 +1,41 @@
-import { ArrowRight, CheckCircle, Clock, Play, Target } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, CheckCircle, Clock, Play, Target, Star } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-
 import { useState } from "react";
 
-export const CurrentModule = () => {
-  const lessons = [
-    { id: 1, title: "What is Claude Code?", completed: true, duration: "12 min" },
-    { id: 2, title: "Getting Access & Account Setup", completed: true, duration: "8 min" },
-    { id: 3, title: "First Prompt Engineering", completed: false, duration: "18 min", current: true },
-    { id: 4, title: "Understanding AI Responses", completed: false, duration: "22 min" },
-    { id: 5, title: "Building Your First App", completed: false, duration: "35 min" },
-  ];
+export const CurrentLevel = () => {
+  const currentLevel = {
+    id: 1,
+    title: "Beginner",
+    description: "Master the fundamentals of AI-powered development with Claude",
+    useCases: [
+      { id: 1, title: "Build a Simple Landing Page", completed: true, current: false, duration: "15 min", difficulty: "Easy" },
+      { id: 2, title: "Create a Contact Form", completed: true, current: false, duration: "20 min", difficulty: "Easy" },
+      { id: 3, title: "Design a Product Card", completed: false, current: true, duration: "25 min", difficulty: "Easy" },
+      { id: 4, title: "Interactive Todo List", completed: false, current: false, duration: "30 min", difficulty: "Medium" },
+      { id: 5, title: "Responsive Navigation", completed: false, current: false, duration: "35 min", difficulty: "Medium" },
+    ]
+  };
 
-  const currentLessonTasks = [
-    { id: 1, title: "Learn prompt structure basics", completed: true, subtasks: ["Read about clear instructions", "Practice with examples"] },
-    { id: 2, title: "Practice clear instructions", completed: true, subtasks: ["Write 3 different prompts", "Compare results"] },
-    { id: 3, title: "Try different prompt styles", completed: false, subtasks: ["Test conversational style", "Try step-by-step format", "Experiment with examples"] },
-    { id: 4, title: "Test prompt variations", completed: false, subtasks: ["Modify existing prompts", "Analyze response quality"] }
+  const currentTasks = [
+    { id: 1, title: "Set up component structure", completed: true },
+    { id: 2, title: "Style the card layout", completed: true },
+    { id: 3, title: "Add product information", completed: false },
+    { id: 4, title: "Implement hover effects", completed: false },
   ];
 
   const [taskStates, setTaskStates] = useState(
-    currentLessonTasks.reduce((acc, task) => ({ ...acc, [task.id]: task.completed }), {})
+    currentTasks.reduce((acc, task) => ({ ...acc, [task.id]: task.completed }), {})
   );
-  
 
   const handleTaskToggle = (taskId: number) => {
     setTaskStates(prev => ({ ...prev, [taskId]: !prev[taskId] }));
   };
 
-  const completedLessons = lessons.filter(l => l.completed).length;
-  const progress = (completedLessons / lessons.length) * 100;
+  const completedUseCases = currentLevel.useCases.filter(u => u.completed).length;
+  const progress = (completedUseCases / currentLevel.useCases.length) * 100;
 
   return (
     <>
@@ -42,128 +44,108 @@ export const CurrentModule = () => {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
-                Module 1: What the Hell is Claude Code?
+                <Star className="h-5 w-5 text-[hsl(var(--primary))]" />
+                {currentLevel.title} Level
                 <Badge variant="secondary">In Progress</Badge>
               </CardTitle>
               <p className="text-muted-foreground mt-1">
-                Discover the power of AI-assisted coding and get started with Claude Code
+                {currentLevel.description}
               </p>
             </div>
             <div className="text-right">
               <p className="text-sm font-medium">{Math.round(progress)}% Complete</p>
-              <p className="text-xs text-muted-foreground">{completedLessons}/{lessons.length} lessons</p>
+              <p className="text-xs text-muted-foreground">{completedUseCases}/{currentLevel.useCases.length} use cases</p>
             </div>
           </div>
-          <div className="relative mt-4">
-            <Progress value={progress} className="h-2" />
+        </CardHeader>
+
+        <CardContent>
+          {/* Progress Bar */}
+          <div className="w-full bg-muted rounded-full h-2 mb-6">
             <div 
-              className="absolute top-0 left-0 h-2 progress-bar rounded-full transition-all duration-1000"
+              className="h-2 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
-        </CardHeader>
-        
-        <CardContent className="space-y-3">
-          {lessons.map((lesson) => (
-            <div
-              key={lesson.id}
-              className={`flex items-center gap-3 p-3 rounded-lg transition-smooth ${
-                lesson.current 
-                  ? 'bg-[hsl(var(--primary))]/5 border border-[hsl(var(--primary))]/20' 
-                  : 'hover:bg-muted/50'
-              }`}
-            >
-              <div className={`p-2 rounded-full ${
-                lesson.completed 
-                  ? 'bg-[hsl(var(--success))] text-white' 
-                  : lesson.current
-                    ? 'gradient-primary text-white'
-                    : 'bg-muted text-muted-foreground'
-              }`}>
-                {lesson.completed ? (
-                  <CheckCircle className="h-4 w-4" />
+
+          {/* Use Cases List */}
+          <div className="space-y-3 mb-6">
+            {currentLevel.useCases.map((useCase) => (
+              <div
+                key={useCase.id}
+                className={`flex items-center gap-3 p-3 rounded-lg border transition-smooth ${
+                  useCase.current 
+                    ? 'border-[hsl(var(--primary))]/30 bg-[hsl(var(--primary))]/5' 
+                    : 'border-muted hover:border-[hsl(var(--primary))]/20'
+                } ${
+                  useCase.completed 
+                    ? 'opacity-75' 
+                    : useCase.current
+                      ? 'shadow-sm'
+                      : ''
+                }`}
+              >
+                {useCase.completed ? (
+                  <CheckCircle className="h-5 w-5 text-[hsl(var(--success))] flex-shrink-0" />
+                ) : useCase.current ? (
+                  <Play className="h-5 w-5 text-[hsl(var(--primary))] flex-shrink-0" />
                 ) : (
-                  <Play className="h-4 w-4" />
+                  <div className="h-5 w-5 rounded-full border-2 border-muted flex-shrink-0" />
                 )}
-              </div>
-              
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <h4 className={`font-medium ${lesson.current ? 'text-[hsl(var(--primary))]' : ''}`}>
-                    {lesson.title}
+                <div className="flex-1">
+                  <h4 className={`font-medium ${useCase.current ? 'text-[hsl(var(--primary))]' : ''}`}>
+                    {useCase.title}
                   </h4>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Clock className="h-3 w-3" />
-                    {lesson.duration}
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground mt-1">
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {useCase.duration}
+                    </span>
+                    <Badge variant="outline" className="text-xs">
+                      {useCase.difficulty}
+                    </Badge>
                   </div>
                 </div>
+                {useCase.current && (
+                  <div className="flex items-center gap-2">
+                    <Badge variant="default" className="text-xs">
+                      Current
+                    </Badge>
+                    <Target className="h-4 w-4 text-[hsl(var(--primary))]" />
+                  </div>
+                )}
               </div>
-              
-              {lesson.current && (
-                <Button size="sm" className="ml-2">
-                  Continue
-                  <ArrowRight className="ml-1 h-3 w-3" />
-                </Button>
-              )}
-            </div>
-          ))}
-          
-          {/* Current Lesson Tasks */}
-          <div className="pt-6 border-t">
-            <div className="flex items-center gap-2 mb-4">
-              <Target className="h-5 w-5 text-[hsl(var(--primary))]" />
-              <h3 className="text-lg font-semibold">First Prompt Engineering - Tasks</h3>
-            </div>
-            
-            <div className="space-y-3">
-              {currentLessonTasks.map((task) => (
-                <div key={task.id} className="p-4 rounded-lg border bg-background">
-                  <div className="flex items-start gap-3 mb-3">
-                    <Checkbox 
-                      checked={taskStates[task.id] || false}
-                      onCheckedChange={() => handleTaskToggle(task.id)}
-                      className="mt-0.5"
-                    />
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <span className={`font-medium ${
-                          taskStates[task.id] ? 'line-through text-muted-foreground' : 'text-foreground'
-                        }`}>
-                          {task.title}
-                        </span>
-                        <Badge 
-                          variant={taskStates[task.id] ? "default" : "secondary"} 
-                          className="text-xs"
-                        >
-                          {taskStates[task.id] ? "Completed" : "In Progress"}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Subtasks */}
-                  <div className="ml-6 space-y-2">
-                    {task.subtasks.map((subtask, index) => (
-                      <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <div className="w-2 h-2 rounded-full bg-[hsl(var(--primary))]/40"></div>
-                        <span>{subtask}</span>
-                      </div>
-                    ))}
-                  </div>
+            ))}
+          </div>
+
+          {/* Current Use Case Tasks */}
+          <div className="border-t pt-4">
+            <h4 className="font-medium mb-3 text-sm">Current Use Case: Design a Product Card</h4>
+            <div className="space-y-2 mb-4">
+              {currentTasks.map((task) => (
+                <div key={task.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50">
+                  <Checkbox 
+                    checked={taskStates[task.id] || false}
+                    onCheckedChange={() => handleTaskToggle(task.id)}
+                  />
+                  <span className={`text-sm ${
+                    taskStates[task.id] ? 'line-through text-muted-foreground' : 'text-foreground'
+                  }`}>
+                    {task.title}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
-          
+
           <div className="pt-4 border-t">
             <Button className="w-full" size="lg">
-              Continue Current Lesson
+              Continue Current Use Case
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </CardContent>
       </Card>
-
     </>
   );
 };

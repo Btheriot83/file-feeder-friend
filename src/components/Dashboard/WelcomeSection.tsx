@@ -49,8 +49,8 @@ export const WelcomeSection = () => {
                 <Trophy className="h-6 w-6 text-[hsl(var(--success))]" />
               </div>
               <div>
-                <p className="text-2xl font-bold">2/12</p>
-                <p className="text-sm text-muted-foreground">Modules Completed</p>
+                <p className="text-2xl font-bold">1/4</p>
+                <p className="text-sm text-muted-foreground">Levels Completed</p>
               </div>
             </div>
           </CardContent>
@@ -63,8 +63,8 @@ export const WelcomeSection = () => {
                 <Clock className="h-6 w-6 text-[hsl(var(--info))]" />
               </div>
               <div>
-                <p className="text-2xl font-bold">18/120</p>
-                <p className="text-sm text-muted-foreground">Lessons Completed</p>
+                <p className="text-2xl font-bold">3/20</p>
+                <p className="text-sm text-muted-foreground">Use Cases Completed</p>
               </div>
             </div>
           </CardContent>
@@ -77,8 +77,8 @@ export const WelcomeSection = () => {
                 <Target className="h-6 w-6 text-[hsl(var(--warning))]" />
               </div>
               <div>
-                <p className="text-2xl font-bold">Expert</p>
-                <p className="text-sm text-muted-foreground">Skill Mastery Level</p>
+                <p className="text-2xl font-bold">Beginner</p>
+                <p className="text-sm text-muted-foreground">Current Level</p>
               </div>
             </div>
           </CardContent>

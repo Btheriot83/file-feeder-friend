@@ -164,11 +164,11 @@ export const Sidebar = () => {
             );
           })}
           
-          {/* Current Lesson Tasks */}
+          {/* Current Level Tasks */}
           {currentTasks && (
             <div className="mt-6 pt-4 border-t border-muted">
               <h4 className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-wider">
-                Current Lesson: {currentTasks.title}
+                Current Use Case: {currentTasks.title}
               </h4>
               <div className="space-y-2">
                 {currentTasks.tasks.map((task) => (

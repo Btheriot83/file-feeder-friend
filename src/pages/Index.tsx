@@ -4,11 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Header } from "@/components/Layout/Header";
 import { Sidebar } from "@/components/Layout/Sidebar";
 import { WelcomeSection } from "@/components/Dashboard/WelcomeSection";
-import { CurrentModule } from "@/components/Dashboard/CurrentModule";
+import { CurrentLevel } from "@/components/Dashboard/CurrentModule";
 import { Home, BookOpen, Library, Users, User } from "lucide-react";
 
 const Index = () => {
-  const [currentModule, setCurrentModule] = useState(0);
+  const [currentLevel, setCurrentLevel] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -26,25 +26,25 @@ const Index = () => {
   
   const [activeTab, setActiveTab] = useState(getActiveTab());
 
-  const navigateNextModule = () => {
-    // Add logic to navigate to next module
-    console.log("Navigate to next module");
+  const navigateNextLevel = () => {
+    // Add logic to navigate to next level
+    console.log("Navigate to next level");
   };
 
-  const navigatePrevModule = () => {
-    // Add logic to navigate to previous module
-    console.log("Navigate to previous module");
+  const navigatePrevLevel = () => {
+    // Add logic to navigate to previous level
+    console.log("Navigate to previous level");
   };
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => navigateNextModule(),
-    onSwipedRight: () => navigatePrevModule(),
+    onSwipedLeft: () => navigateNextLevel(),
+    onSwipedRight: () => navigatePrevLevel(),
     trackMouse: true,
   });
 
   const tabItems = [
     { id: "home", label: "Home", icon: Home, path: "/" },
-    { id: "lessons", label: "Lessons", icon: BookOpen, path: "/lessons" },
+    { id: "levels", label: "Levels", icon: BookOpen, path: "/levels" },
     { id: "library", label: "Library", icon: Library, path: "/use-case-library" },
     { id: "social", label: "Social", icon: Users, path: "/social" },
     { id: "profile", label: "Profile", icon: User, path: "/profile" },
@@ -66,7 +66,7 @@ const Index = () => {
         </aside>
         <main className="w-full md:w-3/4 p-2 md:p-4 space-y-4 pb-20 md:pb-4 overflow-y-auto">
           <WelcomeSection />
-          <CurrentModule />
+          <CurrentLevel />
         </main>
       </div>
       
