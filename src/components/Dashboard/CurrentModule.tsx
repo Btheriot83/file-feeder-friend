@@ -1,10 +1,10 @@
-import { ArrowRight, CheckCircle, Clock, Play, Target, Terminal } from "lucide-react";
+import { ArrowRight, CheckCircle, Clock, Play, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { LessonTerminal } from "@/components/LessonTerminal";
+
 import { useState } from "react";
 
 export const CurrentModule = () => {
@@ -26,7 +26,7 @@ export const CurrentModule = () => {
   const [taskStates, setTaskStates] = useState(
     currentLessonTasks.reduce((acc, task) => ({ ...acc, [task.id]: task.completed }), {})
   );
-  const [showTerminal, setShowTerminal] = useState(false);
+  
 
   const handleTaskToggle = (taskId: number) => {
     setTaskStates(prev => ({ ...prev, [taskId]: !prev[taskId] }));
@@ -155,43 +155,15 @@ export const CurrentModule = () => {
             </div>
           </div>
           
-          <div className="pt-4 border-t space-y-3">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button className="flex-1" size="lg">
-                Continue Current Lesson
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                onClick={() => setShowTerminal(!showTerminal)}
-                className="flex-1"
-              >
-                <Terminal className="mr-2 h-4 w-4" />
-                {showTerminal ? 'Hide' : 'Open'} Claude Terminal
-              </Button>
-            </div>
+          <div className="pt-4 border-t">
+            <Button className="w-full" size="lg">
+              Continue Current Lesson
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
         </CardContent>
       </Card>
 
-      {/* Claude Terminal */}
-      {showTerminal && (
-        <Card className="mt-4 animate-fade-in">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Terminal className="h-5 w-5 text-[hsl(var(--primary))]" />
-              Claude Code Sim Terminal
-            </CardTitle>
-            <p className="text-sm text-muted-foreground">
-              Ask Claude about prompt engineering, get examples, or debug your prompts in real-time
-            </p>
-          </CardHeader>
-          <CardContent>
-            <LessonTerminal />
-          </CardContent>
-        </Card>
-      )}
     </>
   );
 };

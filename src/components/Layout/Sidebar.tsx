@@ -20,48 +20,40 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 
-const modules = [
-  { id: 1, title: "What the Hell is Claude Code?", icon: Brain, progress: 40, badge: "Current" },
-  { id: 2, title: "Under the Hood Secrets", icon: Zap, progress: 0, badge: null },
-  { id: 3, title: "Taking the Wheel", icon: Target, progress: 0, badge: null },
-  { id: 4, title: "Terminal Ninja Skills", icon: Code, progress: 0, badge: null },
-  { id: 5, title: "Advanced Power Moves", icon: Puzzle, progress: 0, badge: null },
-  { id: 6, title: "Build Epic Projects", icon: BookOpen, progress: 0, badge: null },
-  { id: 7, title: "Fixing the Unfixable", icon: Bug, progress: 0, badge: null },
-  { id: 8, title: "Git Like a Boss", icon: GitBranch, progress: 0, badge: null },
-  { id: 9, title: "Production Beast Mode", icon: Rocket, progress: 0, badge: null },
-  { id: 10, title: "Working with Humans", icon: Users, progress: 0, badge: null },
-  { id: 11, title: "Scaling Like a Titan", icon: Trophy, progress: 0, badge: null },
-  { id: 12, title: "Hustle and Innovate", icon: Lightbulb, progress: 0, badge: null },
+const learningLevels = [
+  { id: 1, title: "Beginner", icon: Circle, progress: 40, badge: "Current", useCases: 0 },
+  { id: 2, title: "Intermediate", icon: Target, progress: 0, badge: null, useCases: 0 },
+  { id: 3, title: "Advanced", icon: Zap, progress: 0, badge: null, useCases: 0 },
+  { id: 4, title: "Master", icon: Trophy, progress: 0, badge: null, useCases: 0 },
 ];
 
-// Current lesson tasks based on the active module
-const currentLessonTasks = {
-  1: { // "What the Hell is Claude Code?" module
-    title: "First Prompt Engineering",
+// Current lesson tasks based on the active level
+const currentLevelTasks = {
+  1: { // Beginner level
+    title: "Basic AI Prompting",
     tasks: [
       { id: 1, title: "Learn prompt structure basics", completed: true, clickable: true },
       { id: 2, title: "Practice clear instructions", completed: true, clickable: true },
       { id: 3, title: "Try different prompt styles", completed: false, clickable: true },
-      { id: 4, title: "Test prompt variations", completed: false, clickable: false }
+      { id: 4, title: "Complete first use case", completed: false, clickable: false }
     ]
   },
-  2: { // "Under the Hood Secrets" module
-    title: "Understanding AI Architecture",
+  2: { // Intermediate level
+    title: "Advanced Techniques",
     tasks: [
-      { id: 1, title: "Study transformer models", completed: true, clickable: true },
-      { id: 2, title: "Analyze token processing", completed: true, clickable: true },
-      { id: 3, title: "Explore attention mechanisms", completed: false, clickable: true },
-      { id: 4, title: "Practice: Debug AI responses", completed: false, clickable: false }
+      { id: 1, title: "Study complex prompting", completed: false, clickable: true },
+      { id: 2, title: "Practice multi-step tasks", completed: false, clickable: true },
+      { id: 3, title: "Explore advanced features", completed: false, clickable: true },
+      { id: 4, title: "Complete intermediate use cases", completed: false, clickable: false }
     ]
   },
-  // Add more modules as needed
+  // Add more levels as needed
 };
 
 export const Sidebar = () => {
   const overallProgress = 100; // Temporarily set to 100% to preview the gold master badge
-  const currentModuleId = 1; // "What the Hell is Claude Code?" - the current active module
-  const currentTasks = currentLessonTasks[currentModuleId];
+  const currentLevelId = 1; // Beginner - the current active level
+  const currentTasks = currentLevelTasks[currentLevelId];
   const [taskStates, setTaskStates] = useState(
     currentTasks?.tasks.reduce((acc, task) => ({ ...acc, [task.id]: task.completed }), {}) || {}
   );
@@ -126,20 +118,20 @@ export const Sidebar = () => {
       {/* Module List */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-2 space-y-1">
-          <h4 className="text-xs font-medium text-muted-foreground mb-2 px-2">Learning Modules</h4>
-          {modules.map((module) => {
-            const Icon = module.icon;
+          <h4 className="text-xs font-medium text-muted-foreground mb-2 px-2">Learning Levels</h4>
+          {learningLevels.map((level) => {
+            const Icon = level.icon;
             return (
               <Button
-                key={module.id}
-                variant={module.progress > 0 ? "secondary" : "ghost"}
+                key={level.id}
+                variant={level.progress > 0 ? "secondary" : "ghost"}
                 className="w-full justify-start p-2 h-auto transition-smooth hover:shadow-elegant"
               >
                 <div className="flex items-center gap-2 w-full">
                   <div className={`p-1.5 rounded-lg ${
-                    module.progress === 100 
+                    level.progress === 100 
                       ? 'bg-[hsl(var(--success))] text-white' 
-                      : module.progress > 0 
+                      : level.progress > 0 
                         ? 'gradient-primary text-white'
                         : 'bg-muted text-muted-foreground'
                   }`}>
@@ -147,22 +139,23 @@ export const Sidebar = () => {
                   </div>
                   <div className="flex-1 text-left">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs font-medium">{module.title}</span>
+                      <span className="text-xs font-medium">{level.title}</span>
+                      <span className="text-xs text-muted-foreground">({level.useCases} use cases)</span>
                     </div>
-                    {module.progress > 0 && (
+                    {level.progress > 0 && (
                       <div className="w-full bg-muted rounded-full h-1.5 mb-2">
                         <div 
                           className="h-1.5 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] rounded-full transition-all duration-500"
-                          style={{ width: `${module.progress}%` }}
+                          style={{ width: `${level.progress}%` }}
                         />
                       </div>
                     )}
-                    {module.badge && (
+                    {level.badge && (
                       <Badge 
-                        variant={module.badge === "✓" ? "default" : "secondary"}
+                        variant={level.badge === "✓" ? "default" : "secondary"}
                         className="text-xs px-1.5 py-0.5"
                       >
-                        {module.badge}
+                        {level.badge}
                       </Badge>
                     )}
                   </div>
